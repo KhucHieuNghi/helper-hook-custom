@@ -1,14 +1,15 @@
+/* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, FunctionComponent} from 'react'
 
 interface IProps {
     loadImg: string
-    LazyImg: any
+    LazyImg:  FunctionComponent
+    alt: string 
     className?: string
-    alt?: string
 }
 
-const usePicture =  ({loadImg = '', LazyImg = <div />, className}: IProps) => {
+const usePicture =  ({loadImg = '', LazyImg = () => <div />, className}: IProps): FunctionComponent => {
     const [img, setImg] = useState<any>(<React.Fragment />)
 
     const Error = () => {
