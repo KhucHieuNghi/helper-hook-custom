@@ -7,22 +7,26 @@ interface IProps {
     LazyImg:  FunctionComponent
     alt: string 
     className?: string
+    isBase64?: boolean
 }
+const templateBase64 ='data:image/jpeg;base64,';
 
-const usePicture =  ({loadImg = '', LazyImg = () => <div />, className}: IProps): FunctionComponent => {
-    const [img, setImg] = useState<any>(<React.Fragment />)
-
+const usePicture =  ({loadImg = '', LazyImg = () => <div />, className = '', alt, isBase64 = false}: IProps): FunctionComponent => {
+    const [img, setImg] = useState<any>(<LazyImg />)
+    
     const Error = () => {
         usePicture.isFail = true
         if(typeof LazyImg === 'string'){
-            setImg(<img src={LazyImg} alt={LazyImg} className={className} />)
-        }else{
-            setImg(<LazyImg />)
+            const src = isBase64 ? `${templateBase64} ${loadImg}` : loadImg
+            setImg(<img src={src} alt={LazyImg} className={className} />)
         }
     }
-
+    
     useEffect(()=> {
-        if(img) setImg(<img src={img} alt={img} className={className} onError={Error} />)
+        if(loadImg) {
+            const src = isBase64 ? `${templateBase64}${loadImg}` : loadImg
+            setImg(<img src={src} alt={alt} className={className} onError={Error} />)
+        }
     }, [loadImg]) 
 
     return () => img
