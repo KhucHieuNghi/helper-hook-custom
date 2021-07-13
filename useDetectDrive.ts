@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+import useragent from 'express-useragent';
 
 const getMobileDetect = (userAgent: NavigatorID['userAgent']) => {
   const isAndroid = () => Boolean(userAgent.match(/Android/i))
