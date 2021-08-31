@@ -19,6 +19,38 @@
 // // Extra large devices (large desktops, 1200px and up)
 // @media (min-width: 1200px) { ... }
 
+// @media not|only mediatype and (media feature) {
+//     CSS-Code;
+// }
+// all: Dùng cho mọi thiết bị
+// print: Dùng cho máy in
+// screen: Dùng cho máy tính và các thiết bị smart phone
+// Và media featured thì gồm các thuộc tính sau:
+
+// aspect-ratio: Tỉ lệ giữa chiều rộng và chiều cao của viewport
+// min-aspect-ratio: Tỉ lệ tối thiểu giữa chiều rộng và chiều cao của viewport
+// max-aspect-ratio: Tỉ lệ tôi đa giữa chiều rộng và chiều cao của viewport
+// color: Số bits cho mỗi màu sắc của device
+// color-index: Số lượng màu sắc mà device có thể hiển thị
+// device-aspect-ratio: Tỉ lệ giữa chiều rộng và chiều cao của device
+// max-device-aspect-ratio: Tỉ lệ tối đa giữa chiều rộng và chiều cao của device
+// min-device-aspect-ratio: Tỉ lệ tối thiểu giữa chiều rộng và chiều cao của device
+// device-height: Chiều cao của device
+// device-width: Chiều rộng của device
+// height: Chiều cao của viewport
+// width: Chiều rộng của viewport
+// max-width: Chiều rộng tối đa của viewport
+// min-width: Chiều rộng tối thiểu của viewport
+// max-height: Chiều cao tối đa của viewport
+// min-height: Chiều cao tối thiểu của viewport
+// min-device-width: Chiều rộng tối thiểu của device
+// max-device-width: Chiều rộng tối đa của device
+// min-device-height: Chiều cao tối thiểu của device
+// max-device-height: Chiều cao tối đa của device
+// orientation: Định hướng của khung nhìn (xoay hoặc không xoay thiết bị)
+// resolution: Độ phân giải của thiết bị đầu ra (sử dụng dpi hoặc dpcm)
+
+
 import { useState, useEffect } from 'react'
 
 const getScreenWidth = () => {
