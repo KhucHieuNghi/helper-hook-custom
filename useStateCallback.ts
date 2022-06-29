@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export const useStateCallback = (initialState, callback = () => {}) => {
   const [state, set] = useState(initialState);
   const ref = useRef(false);
@@ -22,3 +24,21 @@ export const useStateCallback = (initialState, callback = () => {}) => {
   );
   return [state, setState];
 }
+
+
+const useStateWithCallback = (initialValue) => {
+    const [value, setValue] = useState(initialValue);
+
+    const setValueAndCallback = (newValue, callback) => {
+        setValue(prevValue => {
+            if (callback) {
+                callback(prevValue, newValue);
+            }
+            return newValue;
+        });
+    };
+
+    return [value, setValueAndCallback];
+}
+
+export { useStateWithCallback};
